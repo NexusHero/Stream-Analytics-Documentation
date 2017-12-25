@@ -1,8 +1,9 @@
-\section{Kapitel1}
+\section{Lambda-Architektur}
+Um Echtzeitverarbeitung gewährleisten zu können wird bereits beim Entwerfen der Architektur angesetzt. Eine inzwischen populäre Architektur stellt die Lambda-Architektur dar. Diese Architektur kommt sowohl in Stream Analytics als auch Apache Storm zum Einsatz. Bei der Verarbeitung von Daten entstehen Herausforderungen wie z. B. die Echtzeitverarbeitung und die Hohe Rechenkomplexität im Zusammenhang mit der Verarbeitung dieser großen Datenmengen in Echtzeit. Um diese Herausforderungen zu bewältigen wird die Lambda-Architektur verwendet, die aus zwei Kernschichten besteht: Batch- und Speed-Layer. Das Ergebnis der Vereinigung dieser Schichten führt zu einer Echtzeitübermittlung der Daten. \\ \\ \textbf{Speed Layer}. Sie hat die Aufgabe möglichst aktuelle Daten zu liefern. Dabei wird nicht auf Datenvollständigkeit und -korrektheit geachtet, da die Datenmenge bei so einer hohen Frequenz nicht vollständig verarbeitet werden können bzw. dies nicht zwanghaft notwendig ist. Beispielsweise ein Sensor, der in Millisekunden abständen die Raumtemperatur verschickt. Hier könnte auch jeden tausendsten Sensorwert verarbeitet werden, da der Nutzwert von mehreren Daten an dieser Stelle nicht gegeben ist. Hier geht es darum, dass die Verzögerungslücke, welches von der Stapelschicht verursacht wird, zu minimieren. Die Verarbeitung der Daten geschieht im besten Falle komplett „in-Memory“.\\ \\ \textbf{Batch Layer}. Sie bezieht alle Daten ein und achtet darauf, exakte Ergebnisse zu erbringen. Im Gegensatz zu dem Speed Layer muss die Daten nicht im Speicher halten und kann Analysen mehrere Zeitfenster hinweg durchführen. Beispielsweise wäre ein Trainingsmodell aus dem Bereich „Machine Learning“ ein Anwendungsfall, welches Microsoft Azure ebenfalls unterstützt. 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/servicemodules.pdf}
+	\includegraphics[width=1.0\linewidth]{images/lambda-architecture}
 	\caption{Cloud-Servicemodelle} %Generelle
 	\label{fig:cnn_structure}
 \end{figure}
