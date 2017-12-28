@@ -9,11 +9,14 @@ Stream Analytics ist ein kostenpflichtiges Produkt, welches ausschließlich auf 
 \subsection{Skalierbarkeit}
 Da Stream Analytics innerhalb der Cloud-Plattform Azure genutzt werden kann, bestehen für die Nutzer keine speziellen Hardwareanforderungen. Welche Anforderung Stream Analytics an die genutzte Cloud-Infrastruktur hat, bleibt Microsoft vorbehalten und ist nicht bekannt \cite{samacha.2017}. Die Skalierung wird aus seitens Microsoft automatisch geregelt, sodass ein Event-Verkehr von 1 Gigabyte pro Sekunde verarbeitet werden kann \cite{samacha.19.12.2017b} Apache Storm ist dagegen eine Standalone-Applikation und kann daher auf eigenen Systemen betrieben werden. Laut Apache kann mit 24 Gigabyte Arbeitsspeicher und 2-Intel-Prozessoren können 100 Million Byte-Messages verarbeitet werden \cite{apachescale.2017}. Auch hier sind keine konkreten Hardwarebedingungen gegeben, sondern sind abhängig von dem Anwendungsfall.
 
-\subsection{Abfragesprachen}
+
+\subsection{Verfügbarkeit}
+..
+
+\subsection{Abfragesprachen} \label{absprache}
 Im Zusammenhang mit Stream Analytics stellt Microsoft eine SQL ähnliche Sprache, mit der Abfragen vereinfacht werden soll. T-SQL definiert eine neue deklaravative Big-Data-Sprache aus dem Hause Microsoft, das ein Resultat aus der Kombination von ebenfalls Microsoft’s internentwickelte Sprache ''SCOPE'' und eine SQL ähnliche Sprache ist (Nicht ANSI SQL) \cite{sql.2016}. Hierdurch sind auch temporale Operatoren, welche Fensteraggregate und temporale Joins, unterstützten  Abfragesprachen sind standardmäßig nicht unterstützt. Hierfür muss der Anwender Programmcode entwickeln, die wiederum Programmierexpertise voraussetzt. Auch Fensterfunktionen werden standardmäßig nicht unterstützt und müssen ebenfalls implementiert werden. Dies trifft auch auf  \cite{samacha.2017}. Allerdings kann Apache Storm durch Einsatz von Fremdbibliotheken an Abfragesprachen, wie zum Beispiel ''Esper'' erweitert werden \cite{esper.2016}.
 
-
-\subsection{Debugging-Unterstützung} 
+\subsection{Debugging-Unterstützung} \label{Debugging}
 Zum Debuggen stehen Protokolle zur Verfügung, welches den Auftragsstatus und Auftragsvorgängen aufzeigen. Jedoch können Benutzer diese Debugg-Inhalte anpassen, sodass der Nutzer sein personalisiertes Logdatei erstellen kann. Auf Seitens wird das nicht automatisch protokolliert. Jedoch liegt das vollständig in der Hand des Entwicklers und das Logging frei gestalten \cite{apachedebugging.2106}.
 
 
@@ -21,4 +24,4 @@ Zum Debuggen stehen Protokolle zur Verfügung, welches den Auftragsstatus und Au
 Stream Analytics beschränkt sich auf die Datenformate Avro, JSON und CSV. Apache Storm dahingegen können beliebige Datenformate genutzt werden, welches eine dynamische Entwicklung und Anpassung möglich macht \cite{Klein.2017}. 
 
 \subsection{Zielgruppe}
-
+Mit Stream Analytics zielt Microsoft auf eine bestimmte Zielgruppe ab: Analysten. Nicht jeder verfügt über die nötigen Programmierkenntnisse um ein CEP-System aufzusetzen. Durch Stream Analytics wird das nicht vorausgesetzt. Dieser Fakt geht aus den vorherigen Abschnitten \ref{Debugging} und \ref{absprache} heraus. Hingegen Apache Storm setzt auf eine andere Zielgruppe ab. Diese richtet sich auf Softwareentwickler mit fundierten Softwarekenntnissen \cite{Familiar.2017}. 
