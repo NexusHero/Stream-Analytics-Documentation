@@ -8,7 +8,30 @@ Eine Azure-Instanz besteht dabei aus einem virtuellen Server. Dieser wird über 
 Azure erlaubt zudem beliebige Entwicklungstools oder -sprachen. Der Anwender hat die Möglichkeit die Lösung auch mit anderen Tools und Frameworks aufzubauen. 
 
 \section{Azure Stream Analytics}
-...
+Wenn man an dem Punkt eines Prozesses angelangt ist, an welchem man eine große Menge von Daten gesammelt und zur Verfügung stehen hat, diese jedoch nur über einen (stark) begrenzten Zeitraum zurückgehalten werden können, bietet Azure Stream Analytics einen Dienst zur weiteren Verarbeitung, welcher nahtlos daran anknüpft. Vor allem im heutigen Industrie 4.0 Umfeld können solche Systeme einen großen Vorteil bieten. Es erlaubt beispielsweise Einblicke in die Sensordaten, um darin nach Mustern zu suchen und entsprechend darauf zu reagieren [1]. Eingehende Daten werden auf Anomalien oder je nach Aufgabe auf relevante Informationen analysiert. Die daraus resultierenden Ergebnisse werden daraufhin entsprechend Präsentiert. Benachrichtigungen werden hier in Echtzeit ausgelöst. Auch auf mobilen Geräten können diese geschickt werden. Ein typisches Echtzeitverarbeitungssystem, welches auf Stream Analytics und weiteren Azure-Diensten aufbaut, wird in Abbildung (…) illustriert.\\ \\
+Dieser Service der Azure-Plattform kann Daten aus einem Datenstrom mit hoher Geschwindigkeit bearbeitet. Unterstützt wird dabei eine SQL-Ähnliche Abfragesprache Stream Analytics Query Language (SAQL), über welche man die dynamischen Datenströme analysiert. Diese ist das Herzstück von Azure Stream Analytics. Obwohl SAQL von der allgegenwärtigen SQL-Abfragesprache abgeleitet wurde, enthält es einzigartige Funktionen, die für die Stream-Verarbeitung notwendig sind [6]. Eine dieser Funktionen ist die Möglichkeit, Ergebnisse mithilfe von Zeitfenstern zu erhalten (siehe Fensterfunktionen). \\ \\
+Image\\ \\
+Die linke Spalte zeigt Sensoren einer IOT-Lösung, Geräte und andere Datenquellen. Diese senden kontinuierlich Daten über das Cloud Gateway an die Azure Hubs [6]. Der Gateway-Dienst ist hierbei ein virtuelles Gerät und ermöglicht eine konsistente und leistungsfähige Verbindung. Die Hubs sind in der Lage Millionen von Ereignissen pro Sekunde zu verarbeiten. Von dort aus werden sie an die weiteren Anwendungen geliefert. Eine Anwendung, um eben diese Daten zu analysieren ist der Stream Analytics-Dienst. Dieser Dienst befindet sich in der Spalte der Transformation. Die Ausgabe kann hierbei auf eine Vielzahl von Endpunkten gerichtet werden. Azure bietet hier einige weitere Dienste, die hier angeknüpft werden können. Die rechte Spalte im Schaubild zeigt lediglich noch die Möglichkeiten, die Daten bzw. Ergebnisse darzustellen [6].\\ \\
+Die Eingaben, die ein Stream Analytics-Job benötigt, können einfach im Azure-Portal konfiguriert werden. Eingaben können Azure-Event-Hubs, Azure-IoT-Hubs und Azure Blob-Speicher umfassen. Ein einzelner Stream Analytics-Job kann mehrere Eingaben enthalten. Es können Datenströme zusammengeführt werden, um die kombinierten Daten abzufragen. Dies ist kann mit einem JOIN in SQL verglichen werden. Auch die Ausgaben werden im Portal angegeben. Ausgaben können Kombinationen aus folgenden\\ \\ Komponenten sein:
+-	Azure SQL-Datenbank 
+-	Azure-Blobspeicher 
+-	Azure-Tabellenspeicher 
+-	Azure-Ereignis-Hub 
+-	Azure-Servicebus-Thema 
+-	Azure Service Bus-Warteschlange 
+-	Azure DocumentDB 
+-	Microsoft Power BI 
+-	Azure Data Lake Store 
+
+Diese breite Palette der unterstützten Ausgabetypen, die Azure hier anbietet, ermöglicht eine Menge an Szenarien. Beispielsweise könnten Aufzeichnungen des Stream Analytics-Job in den Azure Blob-Speicher, Azure-Tabellenspeicher, in eine SQL-Datenbank usw. dauerhaft gespeichert werden. Wenn Stream Analytics nun bei der Analyse des Datenstroms Auffälligkeiten oder Anomalien erkennt, können Push-Benachrichtigungen an diverse Geräte gesendet werden. Die Tatsache, dass ein einzelner Stream Analytics-Job mit mehreren Ein- und Ausgängen konfiguriert werden kann, ermöglicht umfangreiche Topologien mit durchgängigen Stream-Processing-Lösungen [6].
+
+\section{Fensterfunktionen}
+Eine wichtige Funktion der Stream Analytics-Abfragesprache SAQL ist die Möglichkeit, mit Zeitfenstern zu arbeiten. Ergebnisse werden mithilfe dieser Funktion entsprechend gruppiert. Dies ist vergleichbar mit der GROUP BY-Klausel von SQL mit einer der folgenden Erweiterungen:\\ \\
+-	TumblingWindow
+-	HoppingWindow
+-	SlidingWindow
+Beispielsweise soll nun eine Abfrage gestartet werden. Diese soll aufzeigen, wie viele Autos einer speziellen Farbe alle fünf Minuten eine Mautstelle passieren. Mit TumblingWindow kann diese Abfrage so 1:1 implementiert werden. Bei HoppingWindow lässt sich zwar die gleiche Abfrage ausdrücken, allerdings kann hier unabhängig von der Fenstergröße eine Ausgabe erzeugt werden. Es könnte hier beispielsweise einmal pro Minute ausgegeben werden, wie viele Autos einer speziellen Farbe alle fünf Minuten diese Mautstelle anfahren. SlidingWindow hingegen lässt die Abfrage zu, in welchen 5-Minuten-Zeitfenstern zehn oder mehr Autos einer speziellen Farbe die Mautstelle erreichen. SlidingWindow ist somit für den Umgang mit relativ spärlichen Ergebnismengen geeignet. Diese Konzepte sind in Abbildung 3 dargestellt [6].\\ \\
+Image
 
 \section{Lambda-Architektur}
 
