@@ -1,6 +1,10 @@
 \section{Stream Analytics und Apache Storm im Vergleich}
 Die beiden Technologien als Produkt lassen keinen direkten Vergleich zu. Azure Stream Analytics stellt bereits eine funktionsfähige Software dar, die über das Portal in Form eines Dienstes bezogen wird. Apache Storm hingegen muss vorab Aufgesetzt werden und beinhaltet keine Features wie eine SQL-ähnliche Abfragesprache und spezielle Funktionen für die Ereignisverarbeitung. In diesem Abschnitt werden jedoch einige Aspekte aufgeführt, die sich gegenüberstellen lassen. 
 
+
+\subsection{Systemlandschaft} 
+Azure Stream Analytics stellt ein abgeschlossenes CEP-System dar. Hingegen Apache Storm ist lediglich ein Stream Processing-Framework, welches für Berechnungen auf kontinuierlichen Datenströmen optimiert ist \cite{Azure.2017}. Somit ist es ein kein CEP-System an sich, aber ein wichtiger Bestandteil davon. Um dies zu erlangen ist die Verknüpfung von weiteren Tools wie Kafka, Trident und Esper \cite{esper.2016} erforderlich \cite{apache.2017}.
+
 \subsection{Lizenzmodell und Kosten}
 Azure Stream Analytics ist ein kommerzieller Dienst, welcher nur innerhalb des Azure-Portals genutzt werden kann. Hier kommt das Pay-As-You-go-Geschäftsmodell zum Einsatz, welches den Nutzern die Möglichkeit gibt, ausschließlich für den verursachten Datenverkehr zu bezahlen \cite{Pricing.2017}. Desto höher das Datenvolumina, desto teurer wird die Nutzung. Allerdings steht bei Azure nicht nur das Kontingent der verarbeiteten Daten im Vordergrund. Die bereits erwähnten Suits können auch über ein monatliches Abonnement erworben werden. Damit können sowohl Kleinunternehmen als auch Großunternehmen dieses Produkt nutzen. Microsoft hat zudem die Cortana Analytics Suite für Unternehmen jeder Größe entwickelt. Kleinere Unternehmen können davon profitieren, dass keine Investitionen oder teure Software-Lizenzen für den Start benötigt werden. Größere Unternehmen können von der Skalierbarkeit der Azure Cloud-Plattform profitieren \cite{Azure.2017}. Apache Storm hingegen steht unter der Apache-Lizenz und ist somit kostenlos nutzbar \cite{lizenz.2004}.
 

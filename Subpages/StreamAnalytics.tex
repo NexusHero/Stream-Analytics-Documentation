@@ -16,14 +16,14 @@ Das Hauptfeature der Stream Analytics-Abfragesprache SAQL ist die Unterstützung
 	\item HoppingWindow
 	\item SlidingWindow
 \end{itemize}
-\\ \\Zeitfenster erlauben es für Datenströme temporale Vorgänge durchzuführen. Die Ausgabe eines Fensters ist ein einzelnes Ergebnis, welches auf der verwendeten Aggregatfunktion basiert (siehe Abbildung \ref{fig:window_concepts}). 
+Zeitfenster erlauben es für Datenströme temporale Vorgänge durchzuführen. Die Ausgabe eines Fensters ist ein einzelnes Ergebnis, welches auf der verwendeten Aggregatfunktion basiert (siehe Abbildung \ref{fig:window_concepts}). 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{images/fensterfunktionen}
 	\caption{Fensterkonzepte \cite{Prosise.}} %Generelle
 	\label{fig:window_concepts}
 \end{figure} 
-\\ \\Das Resultat enthält einen Zeitstempel vom Ende des Fensters. Ein Fenster wird stets über eine feste Länge definiert. Alle Ergebnisse sollten mit einer GROUP BY-Klausel entsprechend zusammengeführt werden \cite{Azure.2017}. 
+Das Resultat enthält einen Zeitstempel vom Ende des Fensters. Ein Fenster wird stets über eine feste Länge definiert. Alle Ergebnisse sollten mit einer GROUP BY-Klausel entsprechend zusammengeführt werden \cite{Azure.2017}. 
 Als Exempel dient eine Aggregatfunktion, die aufzeigt, wie viele Autos einer speziellen Farbe alle fünf Minuten eine Mautstelle passieren \cite{Prosise.}. Mit TumblingWindow wird ein Datenstrom in einzelne Zeitsegmente unterteilt. Für diese unterteilten Segmente wird eine Funktion ausgeführt. Die Abfrage kann hier äquivalent zum oben beschriebenen Beispiel ausgedrückt werden. Bei den rollierenden Fenstern gibt es keine Überlappungen und ein Ergebnis kann nicht zu mehreren Fenstern gehören. Bei HoppingWindow wird immer für einen festen Zeitraum einen Sprung nach vorne durchgeführt. Grundsätzlich kann dieser Ansatz wie das TumblingWindow angesehen werden, bloß überlappen sich die wiederholenden Fenster. Durch diesen Umstand kann es sein, dass ein Ergebnis zu mehreren Fenstern gehören kann. Die Abfragen lassen sich ähnlich ausdrücken, allerdings kann hier unabhängig von der Fenstergröße eine Ausgabe erzeugt werden. Es lässt sich beispielsweise einmal pro Minute ausgegeben, wie viele Autos einer speziellen Farbe alle fünf Minuten diese Mautstelle anfahren. SlidingWindow hingegen erzeugt nur ein Ereignis, wenn entsprechende Anforderungen erfüllt sind \cite{Azure.2017}. Auch hier können Ergebnisse zu mehreren Fenstern gehören. Dieser Ansatz lässt die Abfrage zu, in welchen Fünf-Minuten-Zeitfenstern zehn oder mehr Autos einer speziellen Farbe die Mautstelle erreichen. SlidingWindow ist somit für den Umgang mit relativ spärlichen Ergebnismengen geeignet \cite{Prosise.}.
 
  
